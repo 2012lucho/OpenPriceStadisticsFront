@@ -1,5 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { PrecioForm } from './models/precio.form';
+import { PublicBranchService } from './services/public.branch.service';
+import { PublicCategoryService } from './services/public.category.service';
+import { PublicEnterpriceService } from './services/public.enterprise.service';
+import { PublicPriceService } from './services/public.price.service';
+import { PublicProductCategoryService } from './services/public.product.category.service';
+import { PublicProductService } from './services/public.product.service';
+import { PublicVendorService } from './services/public.vendor.service';
 
 @Component({
   selector: 'app-tab2',
@@ -19,7 +26,49 @@ export class Tab2Page {
 
   public precio_form = new PrecioForm();
 
-  constructor() {}
+  constructor(
+    private publicCategoryService:        PublicCategoryService,
+    private publicBranchService:          PublicBranchService,
+    private publicEnterpriceService:      PublicEnterpriceService,
+    private publicPriceService:           PublicPriceService,
+    private publicProductCategoryService: PublicProductCategoryService,
+    private publicProductService:         PublicProductService,
+    private publicVendorService:          PublicVendorService
+  ) {}
+
+  ngOnInit() {
+    this.cargarData();
+  }
+
+  cargarData(){
+    this.publicCategoryService.getAll().subscribe(
+      ok => {
+        this.listado_categorias = ok;
+      },
+      err => {}
+    );
+
+    this.publicEnterpriceService.getAll().subscribe(
+      ok => {
+        this.listado_comercios = ok;
+      },
+      err => {}
+    );
+
+    this.publicProductService.getAll().subscribe(
+      ok => {
+        this.listado_productos = ok;
+      },
+      err => {}
+    );
+
+    this.publicVendorService.getAll().subscribe(
+      ok => {
+        this.listado_marcas = ok;
+      },
+      err => {}
+    );
+  }
 
   comercioChange(e:any){
 
