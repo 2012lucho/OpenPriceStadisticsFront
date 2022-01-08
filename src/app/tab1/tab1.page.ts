@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,25 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(
+    private alertController: AlertController
+  ) {}
 
+  public nombre_producto:string = "";
+
+  public resultados:any = [];
+
+  async buscar(){
+    if (this.nombre_producto == ''){
+      const alert = await this.alertController.create({
+        header: 'Atención',
+        message: 'Debe ingresar un nombre de producto.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+    }
+    
+    
+
+  }
 }

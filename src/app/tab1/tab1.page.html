@@ -1,17 +1,78 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Buscar Producto
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="false">
+  
+  <ion-grid>
+    <ion-row>
+      <!-- Buscador -->
+      <ion-card class="w-100">
+        <ion-card-header>
+          <ion-card-title>Buscador</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p>En esta pestaña puede buscar un producto a partir de su nombre, luego el sistema entregará el listado de los últimos registros de Precio
+                  para dicho producto.</p><br>
+        
+                <p>También le sugerimos colaborar con la carga de precios, para que mantener la información actualizada</p>
+              </ion-col>
+            </ion-row>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+            <ion-row>
+              <ion-col>
+
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Producto:</ion-label>
+                      <ion-input placeholder="Mermelada" [(ngModel)]="nombre_producto"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  
+                  <ion-col><ion-button color="primary" (click)="buscar()">Buscar</ion-button></ion-col>
+                </ion-row>
+                
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+         
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-row>
+
+    <!-- Resultados -->
+    <ion-row>
+      <ion-card class="w-100">
+        <ion-card-header>
+          <ion-card-title>Resultados</ion-card-title>
+          <ion-card-subtitle>
+            <p>Aqui se verán los resultados, luego de realizar una búsqueda, Los mismos estarán ordenados por precio de menor a mayor.</p>
+          </ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+
+          <ion-list>
+            
+            <ion-item *ngFor="let item of resultados">
+              <ion-label></ion-label>
+            </ion-item>
+
+          </ion-list>
+          
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  
+  </ion-grid>
+
 </ion-content>
