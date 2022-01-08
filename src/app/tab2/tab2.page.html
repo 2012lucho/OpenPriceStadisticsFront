@@ -12,7 +12,7 @@
   <ion-grid>
     <ion-row>
 
-        <ion-card class="w-100">
+        <ion-card class="w-100 form-precio">
           <ion-card-header>
             <ion-card-title>Ingresar Precio</ion-card-title>
             <ion-card-subtitle>Ingresar nuevos registros de precios es importante para mantener la base de datos actualizada.</ion-card-subtitle>
@@ -22,7 +22,112 @@
             <ion-grid>
 
               <ion-row>
-                
+                <ion-item class="w-100">
+                  <ion-label>Comercio</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.comercio"
+                    [items]="listado_comercios"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="comercioChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Sucursal</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.sucursal"
+                    [items]="listado_sucursales"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="sucursalChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Categoría de Producto</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.producto_categoria"
+                    [items]="listado_categorias"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="categoriaChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Sub Categoría de Producto</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.producto_sub_categoria"
+                    [items]="listado_sub_categorias"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="subCategoriaChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Marca</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.marca"
+                    [items]="listado_marcas"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="marcaChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Sub Marca</ion-label>
+                  <ionic-selectable  item-content
+                    [(ngModel)]="precio_form.sub_marca"
+                    [items]="listado_sub_marcas"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="subMarcaChange($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item class="w-100">
+                  <ion-label>Producto</ion-label>
+                  <ionic-selectable item-content 
+                    [(ngModel)]="precio_form.producto"
+                    [items]="listado_productos"
+                    itemValueField="id"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="productoChage($event)">
+                  </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item>
+                  <ion-label>Precio:</ion-label>
+                  <ion-input placeholder="149,99" [(ngModel)]="precio_form.precio"></ion-input>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-col><ion-button color="success" (click)="ingresar()">Ingresar</ion-button></ion-col>
               </ion-row>
 
             </ion-grid>
