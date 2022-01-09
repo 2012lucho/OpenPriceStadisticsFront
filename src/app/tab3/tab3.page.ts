@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { NewsService } from './services/news.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class Tab3Page {
   public listado_noticias:any = [];
 
   constructor(
-    private newsService: NewsService
+    private newsService:        NewsService,
+    public  loadingController:  LoadingController
   ) {}
 
   ngOnInit() {

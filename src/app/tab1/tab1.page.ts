@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +9,8 @@ import { AlertController } from '@ionic/angular';
 export class Tab1Page {
 
   constructor(
-    private alertController: AlertController
+    private alertController:    AlertController,
+    public  loadingController:  LoadingController
   ) {}
 
   public nombre_producto:string = "";

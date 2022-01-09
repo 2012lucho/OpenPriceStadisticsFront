@@ -171,15 +171,15 @@ export class FormateoService {
       return s;
   }
 
-  getFloat(val:any) {
-      if (!val) { return '';  }
+  getFloat(val:any):number {
+      if (!val) { return undefined;  }
 
       val = (val as string).replace(/^0+/, '');
       let s:string='';
       s=val.replace(/[^0-9,]/g, '');
       s=s.replace(',','.');
       if(s==".00") { s='0.00'; }
-      return s;
+      return Number(s);
   }
 
   esSoloNumber(n:any){  let patron = /^[0-9]*$/;  return patron.test(<string> n); }
