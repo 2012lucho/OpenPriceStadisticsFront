@@ -2,19 +2,20 @@ import { Component, ViewChild } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormateoService } from '../services/formateo.service';
 import { PrecioForm } from './models/precio.form';
-import { PublicBranchService } from './services/public.branch.service';
-import { PublicCategoryService } from './services/public.category.service';
-import { PublicEnterpriceService } from './services/public.enterprise.service';
-import { PublicPriceService } from './services/public.price.service';
-import { PublicProductService } from './services/public.product.service';
-import { PublicVendorService } from './services/public.vendor.service';
+import { PublicBranchService } from '../services/public.branch.service';
+import { PublicCategoryService } from '../services/public.category.service';
+import { PublicEnterpriceService } from '../services/public.enterprise.service';
+import { PublicPriceService } from '../services/public.price.service';
+import { PublicProductService } from '../services/public.product.service';
+import { PublicVendorService } from '../services/public.vendor.service';
+import { ApiConsumer } from '../models/ApiConsumer';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page extends ApiConsumer  {
 
   public listado_comercios:any = [];
   public listado_sucursales = [];
@@ -37,29 +38,12 @@ export class Tab2Page {
     public  loadingController:            LoadingController,
     private alertController:              AlertController,
     public  formateoService:              FormateoService
-  ) {}
+  ) {
+    super(alertController, loadingController);
+  }
 
   ngOnInit() {
     this.cargarData();
-  }
-
-  async loadingEspecificData( service:any, params:string,dataOut:string, loadingText:string, recursionCount:number = 0 ){
-    const loading = await this.loadingController.create({ message: loadingText });
-    await loading.present();
-    service.getAll(params).subscribe(
-      ok => {
-        loading.dismiss();
-        this[dataOut] = ok;
-      },
-      err => {
-        loading.dismiss();
-        if (recursionCount > 100){
-          this[dataOut] = [];
-        }
-        return this.loadingEspecificData(service, params, dataOut, loadingText,recursionCount+1);
-        
-      }
-    );
   }
 
   async cargarData(){
@@ -95,23 +79,14 @@ export class Tab2Page {
   ingresar(){
     let precio:number = this.formateoService.getFloat(this.precio_form.precio);
     if(precio == undefined || precio<=0){
-      this.alert("Ingrese un precio válido");
+      super.displayAlert("Ingrese un precio válido");
     }
-    if (this.precio_form.comercio == undefined){ this.alert("Debe seleccionar un comercio");  }
-    if (this.precio_form.sucursal == undefined){ this.alert("Debe seleccionar una sucursal");  }
-    if (this.precio_form.marca == undefined && this.precio_form.sub_marca == undefined){ this.alert("Debe seleccionar una marca o sub marca");  }
-    if (this.precio_form.producto_categoria == undefined && this.precio_form.producto_sub_categoria){ this.alert("Debe seleccionar una categorìa o sub categoría");  }
-    if (this.precio_form.producto == undefined){ this.alert("Debe seleccionar un producto");  }
-    
+    if (this.precio_form.comercio == undefined){ super.displayAlert("Debe seleccionar un comercio");  }
+    if (this.precio_form.sucursal == undefined){ super.displayAlert("Debe seleccionar una sucursal");  }
+    if (this.precio_form.marca == undefined && this.precio_form.sub_marca == undefined){ super.displayAlert("Debe seleccionar una marca o sub marca");  }
+    if (this.precio_form.producto_categoria == undefined && this.precio_form.producto_sub_categoria){ super.displayAlert("Debe seleccionar una categorìa o sub categoría");  }
+    if (this.precio_form.producto == undefined){ super.displayAlert("Debe seleccionar un producto");  }
     
   }
 
-  async alert(msg:string){
-    const alert = await this.alertController.create({
-      header: 'Atención',
-      message: 'Debe ingresar un nombre de producto.',
-      buttons: ['Aceptar']
-    });
-    await alert.present();
-  }
 }

@@ -8,44 +8,46 @@
 
 <ion-content [fullscreen]="false">
   
-  <ion-grid>
+  <ion-grid class="bg1 h-100">
     <ion-row>
-      <!-- Buscador -->
-      <ion-card class="w-100">
-        <ion-card-header>
-          <ion-card-title>Buscador</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <p>En esta pestaña puede buscar un producto a partir de su nombre, luego el sistema entregará el listado de los últimos registros de Precio
-                  para dicho producto.</p><br>
-        
-                <p>También le sugerimos colaborar con la carga de precios, para que mantener la información actualizada</p>
-              </ion-col>
-            </ion-row>
+      <ion-col size="12" size-sm="6">
+            <!-- Buscador -->
+        <ion-card class="w-100">
+          <ion-card-header>
+            <ion-card-title>Buscador</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <p>En esta pestaña puede buscar un producto a partir de su nombre, luego el sistema entregará el listado de los últimos registros de Precio
+                    para dicho producto.</p><br>
+          
+                  <p>También le sugerimos colaborar con la carga de precios, para que mantener la información actualizada</p>
+                </ion-col>
+              </ion-row>
 
-            <ion-row>
-              <ion-col>
+              <ion-row>
+                <ion-col>
 
-                <ion-row>
-                  <ion-col size="12" size-sm="8">
-                    <ion-item>
-                      <ion-label>Producto:</ion-label>
-                      <ion-input placeholder="Mermelada" [(ngModel)]="nombre_producto"></ion-input>
-                    </ion-item>
-                  </ion-col>
+                  <ion-row>
+                    <ion-col size="12" size-sm="8">
+                      <ion-item>
+                        <ion-label>Producto:</ion-label>
+                        <ion-input placeholder="Mermelada" [(ngModel)]="nombre_producto"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    
+                    <ion-col size="12" size-sm="auto"><ion-button color="primary" (click)="buscar()">Buscar</ion-button></ion-col>
+                  </ion-row>
                   
-                  <ion-col size="12" size-sm="auto"><ion-button color="primary" (click)="buscar()">Buscar</ion-button></ion-col>
-                </ion-row>
-                
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-         
-        </ion-card-content>
-      </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
       
     </ion-row>
 

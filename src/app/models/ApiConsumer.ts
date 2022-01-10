@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from "@angular/core";
-import { AlertController } from "@ionic/angular";
+import { AlertController, LoadingController } from "@ionic/angular";
 import { Observable, Subject } from "rxjs";
 import { first, takeUntil } from "rxjs/operators";
 
@@ -13,7 +13,8 @@ export abstract class ApiConsumer implements OnDestroy {
 
   constructor(
     // private name: string,
-    protected alertCtrl: AlertController
+    protected alertCtrl: AlertController,
+    protected loadingController: LoadingController
   ) { }
 
   protected fetch<T>(callback: CallableFunction): Observable<T> {
@@ -40,6 +41,25 @@ async displayAlert(message: string) {
     // console.log(`unsuscribed fetch`)
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  async loadingEspecificData( service:any, params:string,dataOut:string, loadingText:string, recursionCount:number = 0 ){
+    const loading = await this.loadingController.create({ message: loadingText });
+    await loading.present();
+    service.getAll(params).subscribe(
+      ok => {
+        loading.dismiss();
+        this[dataOut] = ok;
+      },
+      err => {
+        loading.dismiss();
+        if (recursionCount > 100){
+          this[dataOut] = [];
+        }
+        return this.loadingEspecificData(service, params, dataOut, loadingText,recursionCount+1);
+        
+      }
+    );
   }
 }
 
