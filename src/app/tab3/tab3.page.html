@@ -7,10 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid class="bg1 h-100">
+  <ion-grid class="bg1">
     <ion-row>
       
-      <ion-card class="w-100">
+      <ion-card>
         <ion-card-header>
           <ion-card-title>Novedades</ion-card-title>
         </ion-card-header>
@@ -22,11 +22,27 @@
               </ion-col>
             </ion-row>
 
+
           </ion-grid>
          
         </ion-card-content>
       </ion-card>
       
+    </ion-row>
+
+    <ion-row *ngFor="let item of listado_noticias">
+      <ion-col size="12">
+
+        <ion-card class="w-100">
+          <ion-card-header>
+            <ion-card-title>Precio agregado</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{item.text}}           
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

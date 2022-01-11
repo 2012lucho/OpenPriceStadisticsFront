@@ -76,12 +76,12 @@ export class Tab2Page extends ApiConsumer  {
     this.precio_form.sub_marca = undefined;
     this.precio_form.producto = undefined;
     this.loadingEspecificData(this.publicVendorService, 'filter[root_vendor_id]='+this.precio_form.marca.id,   'listado_sub_marcas', 'Consultando sub marcas.');
-    this.loadingEspecificData(this.publicProductService, 'filter[vendor_id]='+this.precio_form.marca.id,   'listado_productos', 'Consultando productos.');
+    this.loadingEspecificData(this.publicProductService, 'vendor_id='+this.precio_form.marca.id,   'listado_productos', 'Consultando productos.');
   }
 
   subMarcaChange(e:any){
     this.precio_form.producto = undefined;
-    this.loadingEspecificData(this.publicProductService, 'filter[vendor_id]='+this.precio_form.sub_marca.id,   'listado_productos', 'Consultando productos.');
+    this.loadingEspecificData(this.publicProductService, 'vendor_id='+this.precio_form.sub_marca.id,   'listado_productos', 'Consultando productos.');
   }
 
   productoChage(e:any){}
