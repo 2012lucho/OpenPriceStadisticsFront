@@ -21,14 +21,14 @@
               <ion-row>
                 <ion-col>
                   <p>En esta pestaña puede cargar un nuevo registro de precio de producto.</p>
-          
-                  <p>La carga de productos es importante para mantener la base de datos actualizada.</p>
+                  <p>La carga de productos es importante para mantener la base de datos actualizada.</p><br>
 
                   <p>Si no encontras un producto, categoría, marca o comercio, escribinos a: <a href="https://www.facebook.com/TandilPreciosBaratos">Tandil Precios Baratos</a></p>
-
                   <p>El sitio está en desarrollo y si la idea prende o hay interés se continuará agregando funcionalidades.</p>
+                  <p>Podes acercar sugerencias, reportar errores escribiendo a: <a href="https://www.facebook.com/greenborn.software">Greenborn Software</a> </p><br>
 
-                  <p>Podes acercar sugerencias, reportar errores escribiendo a: <a href="https://www.facebook.com/greenborn.software">Greenborn Software</a> </p>
+                  <p>Los campos de Categoría, Sub Categoría, Marca y Sub Marca se usan para filtrar la lista de productos.</p>
+                  <p>Los nuevos registros de precios, se guardarán con la facha y hora del momento en el cual son enviados.</p>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -141,6 +141,21 @@
                     [canSearch]="true"
                     (onChange)="productoChage($event)">
                   </ionic-selectable>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
+                <ion-item>
+                  <ion-label>Fecha:</ion-label>
+                  <ion-datetime 
+                      displayFormat="DD/MMM/YYYY"
+                      monthValues="01,02,03,04,05,06,07,08,09,10,11,12"
+                      monthShortNames="ene, feb, mar, abr, may, jun, jul, ago, sep, oct, nov, dic"
+                      min="1967"
+                      max="{{max_date}}"
+                      doneText="Elegir"
+                      cancelText="Cancelar"
+                     locale="es-AR" [(ngModel)]="precio_form.fecha"></ion-datetime>
                 </ion-item>
               </ion-row>
 

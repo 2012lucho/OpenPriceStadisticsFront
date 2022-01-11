@@ -7,5 +7,6 @@ export class PrecioForm {
     public sub_marca;
     public producto;
     public precio;    
+    public fecha = new Date().toISOString();
 }
   

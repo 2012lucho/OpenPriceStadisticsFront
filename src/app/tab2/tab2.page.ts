@@ -9,6 +9,7 @@ import { PublicPriceService } from '../services/public.price.service';
 import { PublicProductService } from '../services/public.product.service';
 import { PublicVendorService } from '../services/public.vendor.service';
 import { ApiConsumer } from '../models/ApiConsumer';
+import { Price } from '../models/price';
 
 @Component({
   selector: 'app-tab2',
@@ -27,6 +28,8 @@ export class Tab2Page extends ApiConsumer  {
   public precio;
 
   public precio_form = new PrecioForm();
+  public price_reg = new Price();
+  public max_date:string;
 
   constructor(
     private publicCategoryService:        PublicCategoryService,
@@ -40,6 +43,8 @@ export class Tab2Page extends ApiConsumer  {
     public  formateoService:              FormateoService
   ) {
     super(alertController, loadingController);
+    this.max_date = this.formateoService.getFormatedDate(new Date());
+    console.log(this.max_date);
   }
 
   ngOnInit() {
@@ -53,30 +58,35 @@ export class Tab2Page extends ApiConsumer  {
   }
 
   comercioChange(e:any){
+    this.precio_form.sucursal = undefined;
     this.loadingEspecificData(this.publicBranchService, 'filter[enterprise_id]='+this.precio_form.comercio.id,   'listado_sucursales', 'Consultando sucursales.');
   }
 
   sucursalChange(e:any){}
 
   categoriaChange(e:any){
-    this.loadingEspecificData(this.publicCategoryService, 'filter[root_category_id]='+this.precio_form.producto_categoria.id,   'listado_sub_categorias', 'Consultando sub categorias.');
+    this.precio_form.producto_sub_categoria = undefined;
+    this.loadingEspecificData(this.publicCategoryService, 'root_category_id='+this.precio_form.producto_categoria.id,   'listado_sub_categorias', 'Consultando sub categorias.');
   }
 
   subCategoriaChange(e:any){
   }
 
   marcaChange(e:any){
+    this.precio_form.sub_marca = undefined;
+    this.precio_form.producto = undefined;
     this.loadingEspecificData(this.publicVendorService, 'filter[root_vendor_id]='+this.precio_form.marca.id,   'listado_sub_marcas', 'Consultando sub marcas.');
     this.loadingEspecificData(this.publicProductService, 'filter[vendor_id]='+this.precio_form.marca.id,   'listado_productos', 'Consultando productos.');
   }
 
   subMarcaChange(e:any){
+    this.precio_form.producto = undefined;
     this.loadingEspecificData(this.publicProductService, 'filter[vendor_id]='+this.precio_form.sub_marca.id,   'listado_productos', 'Consultando productos.');
   }
 
   productoChage(e:any){}
 
-  ingresar(){
+  async ingresar(){
     let precio:number = this.formateoService.getFloat(this.precio_form.precio);
     if(precio == undefined || precio<=0){
       super.displayAlert("Ingrese un precio válido");
@@ -87,6 +97,21 @@ export class Tab2Page extends ApiConsumer  {
     if (this.precio_form.producto_categoria == undefined && this.precio_form.producto_sub_categoria){ super.displayAlert("Debe seleccionar una categorìa o sub categoría");  }
     if (this.precio_form.producto == undefined){ super.displayAlert("Debe seleccionar un producto");  }
     
+    this.price_reg.product_id = this.precio_form.producto.id;
+    this.price_reg.price      = precio;
+    this.price_reg.branch_id  = this.precio_form.sucursal.id;
+    this.price_reg.date_time  = this.formateoService.getFormatedDate(new Date(this.precio_form.fecha));
+
+    const loading = await this.loadingController.create({ message: "Buscando..." });
+    this.publicPriceService.post(this.price_reg).subscribe(
+      ok => {
+        super.displayAlert("Nuevo registro de precio creado, a partir de ahora aparecerá en las búsquedas");
+        this.precio_form = new PrecioForm();
+      },
+      err => {
+        loading.dismiss();
+      }
+    );
   }
 
 }
