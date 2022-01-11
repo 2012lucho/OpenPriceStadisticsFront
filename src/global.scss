@@ -30,9 +30,17 @@
 }
 
 .h-100{
-    height: 100vh;
+    min-height: 100vh;
 }
 
-.bg1 {
-    background-image: url("assets/img/bg1.jpeg");
+ion-content {
+    --background: none;
+    background-image: url('assets/img/bg1.png');
+    -webkit-background-size: repeat;
+    -moz-background-size: repeat;
+    background-size: repeat;
+  }
+
+ion-card-header{
+    background: #e1e1e1;
 }
