@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ApiConsumer } from '../models/ApiConsumer';
 import { FormateoService } from '../services/formateo.service';
+import { PublicIncrementalStatsService } from '../services/public.incremental.stats.service';
 
 import { PublicProductByPriceService } from '../services/public.product.by.price.service';
 
@@ -16,14 +17,26 @@ export class Tab1Page  extends ApiConsumer  {
     private alertController:    AlertController,
     public  loadingController:  LoadingController,
     private publicProductByPriceService: PublicProductByPriceService,
-    public  formateoService: FormateoService
+    public  formateoService: FormateoService,
+    private publicIncrementalStatsService: PublicIncrementalStatsService
   ) {
     super(alertController, loadingController);
+  }
+
+  ngOnInit() {
+    this.publicIncrementalStatsService.getAll().subscribe(
+      ok => {
+        this.estadisticas_incrementales = ok;
+      },
+      err => {
+      }
+    );
   }
 
   public nombre_producto:string = "";
 
   public resultados:any = [];
+  public estadisticas_incrementales:any = [];
 
   async buscar(){
     if (this.nombre_producto == ''){
