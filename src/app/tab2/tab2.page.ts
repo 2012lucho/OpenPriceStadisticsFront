@@ -88,6 +88,11 @@ export class Tab2Page extends ApiConsumer  {
 
   productoChage(e:any){}
 
+  nuevoComercio(){}
+  nuevaSucursal(){}
+  nuevaCategoria(){}
+  nuevaMarca(){}
+
   async ingresar(){
     let precio:number = this.formateoService.getFloat(this.precio_form.precio);
     if(precio == undefined || precio<=0){

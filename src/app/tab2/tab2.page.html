@@ -47,45 +47,63 @@
             <ion-grid>
 
               <ion-row>
-                <ion-item class="w-100">
-                  <ion-label>Comercio</ion-label>
-                  <ionic-selectable  item-content
-                    [(ngModel)]="precio_form.comercio"
-                    [items]="listado_comercios"
-                    itemValueField="id"
-                    itemTextField="name"
-                    [canSearch]="true"
-                    (onChange)="comercioChange($event)">
-                  </ionic-selectable>
-                </ion-item>
+                <ion-col>
+                  <ion-item class="w-100">
+                    <ion-label>Comercio</ion-label>
+                    <ionic-selectable  item-content
+                      [(ngModel)]="precio_form.comercio"
+                      [items]="listado_comercios"
+                      itemValueField="id"
+                      itemTextField="name"
+                      [canSearch]="true"
+                      (onChange)="comercioChange($event)">
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+                
+                <ion-col size="auto">
+                  <ion-button (click)="nuevoComercio()" color="secondary">Nuevo Comercio</ion-button>
+                </ion-col>
               </ion-row>
 
               <ion-row>
-                <ion-item class="w-100">
-                  <ion-label>Sucursal</ion-label>
-                  <ionic-selectable  item-content
-                    [(ngModel)]="precio_form.sucursal"
-                    [items]="listado_sucursales"
-                    itemValueField="id"
-                    itemTextField="name"
-                    [canSearch]="true"
-                    (onChange)="sucursalChange($event)">
-                  </ionic-selectable>
-                </ion-item>
+                <ion-col>
+                  <ion-item class="w-100">
+                    <ion-label>Sucursal</ion-label>
+                    <ionic-selectable  item-content
+                      [(ngModel)]="precio_form.sucursal"
+                      [items]="listado_sucursales"
+                      itemValueField="id"
+                      itemTextField="name"
+                      [canSearch]="true"
+                      (onChange)="sucursalChange($event)">
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="auto">
+                  <ion-button (click)="nuevaSucursal()" color="secondary">Nueva Sucursal</ion-button>
+                </ion-col>
               </ion-row>
 
               <ion-row>
-                <ion-item class="w-100">
-                  <ion-label>Categoría de Producto</ion-label>
-                  <ionic-selectable  item-content
-                    [(ngModel)]="precio_form.producto_categoria"
-                    [items]="listado_categorias"
-                    itemValueField="id"
-                    itemTextField="name"
-                    [canSearch]="true"
-                    (onChange)="categoriaChange($event)">
-                  </ionic-selectable>
-                </ion-item>
+                <ion-col>
+                  <ion-item class="w-100">
+                    <ion-label>Categoría de Producto</ion-label>
+                    <ionic-selectable  item-content
+                      [(ngModel)]="precio_form.producto_categoria"
+                      [items]="listado_categorias"
+                      itemValueField="id"
+                      itemTextField="name"
+                      [canSearch]="true"
+                      (onChange)="categoriaChange($event)">
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="auto">
+                  <ion-button (click)="nuevaCategoria()" color="secondary">Nueva Categoría</ion-button>
+                </ion-col>
               </ion-row>
 
               <ion-row>
@@ -103,17 +121,23 @@
               </ion-row>
 
               <ion-row>
-                <ion-item class="w-100">
-                  <ion-label>Marca</ion-label>
-                  <ionic-selectable  item-content
-                    [(ngModel)]="precio_form.marca"
-                    [items]="listado_marcas"
-                    itemValueField="id"
-                    itemTextField="name"
-                    [canSearch]="true"
-                    (onChange)="marcaChange($event)">
-                  </ionic-selectable>
-                </ion-item>
+                <ion-col>
+                  <ion-item class="w-100">
+                    <ion-label>Marca</ion-label>
+                    <ionic-selectable  item-content
+                      [(ngModel)]="precio_form.marca"
+                      [items]="listado_marcas"
+                      itemValueField="id"
+                      itemTextField="name"
+                      [canSearch]="true"
+                      (onChange)="marcaChange($event)">
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="auto">
+                  <ion-button (click)="nuevaMarca()" color="secondary">Nueva Marca</ion-button>
+                </ion-col>
               </ion-row>
 
               <ion-row>
@@ -131,17 +155,23 @@
               </ion-row>
 
               <ion-row>
-                <ion-item class="w-100">
-                  <ion-label>Producto</ion-label>
-                  <ionic-selectable item-content 
-                    [(ngModel)]="precio_form.producto"
-                    [items]="listado_productos"
-                    itemValueField="id"
-                    itemTextField="name"
-                    [canSearch]="true"
-                    (onChange)="productoChage($event)">
-                  </ionic-selectable>
-                </ion-item>
+                <ion-col>
+                  <ion-item class="w-100">
+                    <ion-label>Producto</ion-label>
+                    <ionic-selectable item-content 
+                      [(ngModel)]="precio_form.producto"
+                      [items]="listado_productos"
+                      itemValueField="id"
+                      itemTextField="name"
+                      [canSearch]="true"
+                      (onChange)="productoChage($event)">
+                    </ionic-selectable>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col size="auto">
+                  <ion-button (click)="nuevoProducto()" color="secondary">Nuevo Producto</ion-button>
+                </ion-col>
               </ion-row>
 
               <ion-row>
