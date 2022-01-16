@@ -21,4 +21,10 @@
 .input-group-prepend{
     background: #ddd;
 }
+
+.input-group-prepend ion-icon{
+    height:      25px;
+    width:       25px;
+    padding-top: 5px;
+}
     
