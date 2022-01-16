@@ -10,6 +10,7 @@ import { PublicProductService } from '../services/public.product.service';
 import { PublicVendorService } from '../services/public.vendor.service';
 import { ApiConsumer } from '../models/ApiConsumer';
 import { Price } from '../models/price';
+import { PublicEnterpriceItemService } from '../services/public.enterprice.item.service';
 
 @Component({
   selector: 'app-tab2',
@@ -18,13 +19,14 @@ import { Price } from '../models/price';
 })
 export class Tab2Page extends ApiConsumer  {
 
-  public listado_comercios:any = [];
-  public listado_sucursales = [];
-  public listado_categorias:any = [];
+  public listado_comercios:any      = [];
+  public listado_sucursales         = [];
+  public listado_categorias:any     = [];
   public listado_sub_categorias:any = [];
-  public listado_marcas:any = [];
-  public listado_sub_marcas:any = [];
-  public listado_productos:any = [];
+  public listado_marcas:any         = [];
+  public listado_sub_marcas:any     = [];
+  public listado_productos:any      = [];
+
   public precio;
 
   public precio_form = new PrecioForm();
@@ -40,7 +42,7 @@ export class Tab2Page extends ApiConsumer  {
     private publicVendorService:          PublicVendorService,
     public  loadingController:            LoadingController,
     private alertController:              AlertController,
-    public  formateoService:              FormateoService
+    public  formateoService:              FormateoService,
   ) {
     super(alertController, loadingController);
     this.max_date = this.formateoService.getFormatedDate(new Date());
