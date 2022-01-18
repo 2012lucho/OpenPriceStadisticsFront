@@ -11,6 +11,7 @@ import { PublicVendorService } from '../services/public.vendor.service';
 import { ApiConsumer } from '../models/ApiConsumer';
 import { Price } from '../models/price';
 import { PublicEnterpriceItemService } from '../services/public.enterprice.item.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -43,6 +44,7 @@ export class Tab2Page extends ApiConsumer  {
     public  loadingController:            LoadingController,
     private alertController:              AlertController,
     public  formateoService:              FormateoService,
+    private  router:                      Router,
   ) {
     super(alertController, loadingController);
     this.max_date = this.formateoService.getFormatedDate(new Date());
@@ -88,7 +90,9 @@ export class Tab2Page extends ApiConsumer  {
 
   productoChage(e:any){}
 
-  nuevoComercio(){}
+  nuevoComercio(){
+    this.router.navigate([ '/empresas' ]);
+  }
   nuevaSucursal(){}
   nuevaCategoria(){}
   nuevaMarca(){}
