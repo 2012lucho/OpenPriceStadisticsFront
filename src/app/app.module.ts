@@ -11,10 +11,9 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { AutenticationModule } from './modules/autentication/autentication.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AutenticationModule, HttpClientModule, IonicSelectableModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AutenticationModule, HttpClientModule, IonicSelectableModule],
+    providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
