@@ -93,7 +93,9 @@ export class Tab2Page extends ApiConsumer  {
   nuevoComercio(){
     this.router.navigate([ '/empresas' ]);
   }
-  nuevaSucursal(){}
+  nuevaSucursal(){
+    this.router.navigate([ '/sucursales' ]);
+  }
   nuevaCategoria(){}
   nuevaMarca(){}
 

@@ -9,6 +9,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { EmpresasComponent } from '../components/empresas/empresas.component';
+import { SucursalesComponent } from '../components/sucursales/sucursales.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { EmpresasComponent } from '../components/empresas/empresas.component';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule
   ],
-  declarations: [EmpresasComponent, Tab2Page]
+  declarations: [EmpresasComponent, SucursalesComponent, Tab2Page]
 })
 export class Tab2PageModule {}

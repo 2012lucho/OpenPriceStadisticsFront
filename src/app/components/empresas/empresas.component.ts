@@ -34,6 +34,7 @@ export class EmpresasComponent  extends ApiConsumer {
 
   async ingresar(){
     if (this.model.name == undefined || this.model.name == ''){ super.displayAlert("Debe especificar un nombre.");  }
+   // if (this.model.rubros.length > 0){ super.displayAlert("Debe especificar al menos un rubro.");  }
 
     const loading = await this.loadingController.create({ message: "Buscando..." });
     this.privateEnterpriceService.post(this.model).subscribe(

@@ -27,7 +27,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (token && request.url != (config.apiBaseUrl + config.loginAction) ) {
       request = req.clone({
         setHeaders: {
-          Authorization: `Token ${ token }`
+          Authorization: `Bearer ${ token }`
         }
       });
     }
