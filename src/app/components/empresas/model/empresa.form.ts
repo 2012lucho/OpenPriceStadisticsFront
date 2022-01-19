@@ -1,5 +1,5 @@
 export class EmpresaForm {
     public rubros:any;
-    public nombre:string;
+    public name:string;
 }
   

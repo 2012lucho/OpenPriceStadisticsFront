@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ApiConsumer } from 'src/app/models/ApiConsumer';
 import { AuthService } from 'src/app/modules/autentication/services/auth.service';
+import { PrivateEnterpriceService } from 'src/app/services/private.enterprice.service';
 import { PublicEnterpriceItemService } from 'src/app/services/public.enterprice.item.service';
 import { EmpresaForm } from './model/empresa.form';
 
@@ -18,6 +19,7 @@ export class EmpresasComponent  extends ApiConsumer {
     private router:                      Router,
     private publicEnterpriceItemService: PublicEnterpriceItemService,
     public  loadingController:           LoadingController,
+    private privateEnterpriceService:    PrivateEnterpriceService,
     private alertController:             AlertController
   ) { 
     super(alertController, loadingController);
@@ -30,8 +32,19 @@ export class EmpresasComponent  extends ApiConsumer {
     this.router.navigate([ '/tabs' ]);
   }
 
-  ingresar(){
+  async ingresar(){
+    if (this.model.name == undefined || this.model.name == ''){ super.displayAlert("Debe especificar un nombre.");  }
 
+    const loading = await this.loadingController.create({ message: "Buscando..." });
+    this.privateEnterpriceService.post(this.model).subscribe(
+      ok => {
+        super.displayAlert("Nuevo registro de comercio creado, a partir de ahora aparecerá en las búsquedas");
+        loading.dismiss();
+      },
+      err => {
+        loading.dismiss();
+      }
+    );
   }
 
   ngOnInit() {
