@@ -29,7 +29,7 @@ export class EmpresasComponent  extends ApiConsumer {
   public listado_rubros:any = [];
 
   goBack(){
-    this.router.navigate([ '/tabs' ]);
+    this.router.navigate([ '/tabs/tab2' ]);
   }
 
   async ingresar(){

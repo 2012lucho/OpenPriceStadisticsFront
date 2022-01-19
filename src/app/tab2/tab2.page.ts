@@ -48,7 +48,6 @@ export class Tab2Page extends ApiConsumer  {
   ) {
     super(alertController, loadingController);
     this.max_date = this.formateoService.getFormatedDate(new Date());
-    console.log(this.max_date);
   }
 
   ngOnInit() {
@@ -96,8 +95,15 @@ export class Tab2Page extends ApiConsumer  {
   nuevaSucursal(){
     this.router.navigate([ '/sucursales' ]);
   }
-  nuevaCategoria(){}
-  nuevaMarca(){}
+  nuevaCategoria(){
+    this.router.navigate([ '/categorias' ]);
+  }
+  nuevaMarca(){
+    this.router.navigate([ '/marcas' ]);
+  }
+  nuevoProducto(){
+    this.router.navigate([ '/productos' ]);
+  }
 
   async ingresar(){
     let precio:number = this.formateoService.getFloat(this.precio_form.precio);

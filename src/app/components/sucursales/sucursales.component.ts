@@ -31,7 +31,7 @@ export class SucursalesComponent  extends ApiConsumer {
   }
 
   goBack(){
-    this.router.navigate([ '/tabs' ]);
+    this.router.navigate([ '/tabs/tab2' ]);
   }
 
   async ingresar(){
