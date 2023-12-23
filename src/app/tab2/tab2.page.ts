@@ -116,6 +116,7 @@ export class Tab2Page extends ApiConsumer  {
     if (this.precio_form.producto_categoria == undefined && this.precio_form.producto_sub_categoria){ super.displayAlert("Debe seleccionar una categorìa o sub categoría");  }
     if (this.precio_form.producto == undefined){ super.displayAlert("Debe seleccionar un producto");  }
     
+    this.price_reg.es_oferta  = this.precio_form.es_oferta ? 1 : 0;
     this.price_reg.product_id = this.precio_form.producto.id;
     this.price_reg.price      = precio;
     this.price_reg.branch_id  = this.precio_form.sucursal.id;

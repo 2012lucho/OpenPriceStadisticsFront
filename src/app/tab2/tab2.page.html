@@ -196,6 +196,13 @@
               </ion-row>
 
               <ion-row>
+                <ion-item>
+                  <ion-checkbox [(ngModel)]="precio_form.es_oferta"></ion-checkbox>
+                  <ion-label>&nbsp;Es oferta:</ion-label>
+                </ion-item>
+              </ion-row>
+
+              <ion-row>
                 <ion-col><ion-button (click)="ingresar()">Ingresar</ion-button></ion-col>
               </ion-row>
 
