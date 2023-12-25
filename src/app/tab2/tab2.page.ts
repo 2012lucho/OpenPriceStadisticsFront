@@ -106,6 +106,8 @@ export class Tab2Page extends ApiConsumer  {
   }
 
   async ingresar(){
+    alert("Funcionalidad desactivada (por el momento)"); 
+    return;
     let precio:number = this.formateoService.getFloat(this.precio_form.precio);
     if(precio == undefined || precio<=0){
       super.displayAlert("Ingrese un precio válido");
